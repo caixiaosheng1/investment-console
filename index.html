@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>投资机会研究控制台</title>
+<style>
+body{margin:0;background:#08101d;color:#eef4ff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.side{padding:22px;border-right:1px solid #243856;background:#0b1423;position:sticky;top:0;height:100vh}
+h1,h2,h3{margin-top:0}.muted{color:#91a1ba;font-size:12px}.nav button{display:block;width:100%;text-align:left;padding:11px;border:0;border-radius:9px;background:none;color:#9aabc4;margin:4px 0;cursor:pointer}
+.nav button.active,.nav button:hover{background:#14233a;color:white}.main{padding:24px;max-width:1400px}.top{display:flex;gap:10px;margin-bottom:18px}
+input,select{background:#0f1a2d;border:1px solid #243856;color:white;border-radius:9px;padding:10px}input{flex:1}.card{background:#101b2e;border:1px solid #243856;border-radius:14px;padding:16px}
+.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:14px}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.kpi{background:#0b1528;border:1px solid #243856;border-radius:10px;padding:12px}.kpi b{font-size:22px}.kpi span{display:block;color:#91a1ba;font-size:11px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.two{grid-template-columns:repeat(2,1fr)}.tag{display:inline-block;border:1px solid #31517d;color:#b8d5ff;border-radius:99px;padding:3px 7px;font-size:11px;margin:2px 3px 2px 0}
+.high{color:#5bd3a4}.mid{color:#f3c969}.risk{color:#ff8d98}.hidden{display:none}.view{margin-top:14px}p,li{color:#c5d0e3;line-height:1.7}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #243856;padding:11px;text-align:left;vertical-align:top}th{background:#132039}
+a{color:#7db5ff}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.hero,.grid,.two{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><div class="app">
+<aside class="side"><h2>投资机会研究台</h2><div class="muted">采访 → 数据验证 → 产业链 → 机会雷达</div>
+<div class="nav" style="margin-top:18px">
+<button class="active" data-v="home">总览</button><button data-v="radar">机会雷达</button><button data-v="compare">观点 vs 数据</button><button data-v="chains">产业链扩展</button><button data-v="signals">跟踪指标</button><button data-v="sources">权威数据源</button>
+</div></aside>
+<main class="main">
+<div class="top"><input id="q" placeholder="搜索：黄金、铜、稀土、镓、锗、钨、回收……"><select id="stage"><option value="">全部阶段</option><option>早期</option><option>验证中</option><option>拥挤</option></select></div>
+
+<section id="home" class="view">
+<div class="hero">
+<div class="card"><div class="muted">基于今天两份采访 + 权威机构数据交叉验证</div><h1>不追随嘉宾观点，只追踪可验证的投资逻辑</h1>
+<p>本版只保留今天的研究起点：黄金/白银，以及矿业、铜与关键矿产。每个机会都拆成“采访主张 → 权威数据 → 上下游传导 → 可投资方向 → 反证条件”。</p>
+<div class="kpis"><div class="kpi"><b>289t</b><span>WGC：2026 Q2央行净购金</span></div><div class="kpi"><b>25%</b><span>IEA：2035铜供应缺口</span></div><div class="kpi"><b>98%</b><span>USGS：中国原生镓产量占比</span></div><div class="kpi"><b>$162m</b><span>DOE关键矿产回收项目</span></div></div></div>
+<div class="card"><div class="muted">当前最值得研究的非共识方向</div><h3>矿山之外：加工、回收、冶炼、磁材与副产品回收</h3><p>IEA、USGS与DOE政策数据共同指向：真正脆弱的不只是矿石资源，而是高度集中的中游加工与回收能力。</p><b class="high">证据等级：高</b></div>
+</div>
+<h2 style="margin-top:22px">优先机会雷达</h2><div id="homeRadar" class="grid"></div>
+</section>
+
+<section id="radar" class="view hidden"><h2>机会雷达</h2><div id="radarGrid" class="grid"></div></section>
+
+<section id="compare" class="view hidden"><h2>采访观点 vs 权威数据</h2><div class="card" style="overflow:auto"><table>
+<tr><th>主题</th><th>采访主张</th><th>权威数据验证</th><th>结论</th></tr>
+<tr><td>黄金</td><td>潜在加息/高利率是主要压力。</td><td>WGC Q2 2026：北美ETF流出与更高通胀、利率预期和美元走强有关；但央行Q2仍净购289吨，H1净购345吨。</td><td>短线利率逻辑成立，但不能推出长期需求崩坏。</td></tr>
+<tr><td>央行购金</td><td>亚洲/央行可能提供长期支撑。</td><td>WGC调查：89%央行预计全球官方黄金持有未来12个月增加，45%预计自身增持；过去4年年均购金约1000吨。</td><td>结构性需求得到强数据支持。</td></tr>
+<tr><td>铜</td><td>大型项目受许可、资本开支和政治风险拖累。</td><td>IEA 2026：铜到2040需求增加约700万吨；2035基准项目管线仍有约25%供应缺口。</td><td>这是今天采访里最强的结构性逻辑之一。</td></tr>
+<tr><td>关键矿产</td><td>真正瓶颈在加工，不只是采矿。</td><td>USGS：中国原生镓约98%、钨矿约83%、稀土矿约68%；DOE 2026-08拨1.62亿美元支持9个工业原料回收项目。</td><td>中游加工/回收/磁材，比单纯找矿更值得优先研究。</td></tr>
+<tr><td>钨</td><td>高价格让项目IRR异常漂亮，要审慎。</td><td>USGS 2026：2025钨价大涨，中国实施出口控制，美加多个项目获DPA Title III支持。</td><td>方向成立，但必须检查商品价格假设和融资能力。</td></tr>
+</table></div></section>
+
+<section id="chains" class="view hidden"><h2>产业链扩展</h2><div class="grid two">
+<div class="card"><h3>铜</h3><p><b>上游：</b>低政治风险铜矿、扩产项目、勘探服务。<br><b>中游：</b>冶炼、精炼、港口、铁路、电力。<br><b>下游：</b>电网、变压器、数据中心供电、EV、储能。</p></div>
+<div class="card"><h3>稀土 / 磁材</h3><p><b>上游：</b>稀土精矿。<br><b>中游：</b>分离氧化物 → 金属/合金 → NdFeB永磁体。<br><b>下游：</b>机器人、无人机、风机、军工、EV。</p></div>
+<div class="card"><h3>镓 / 锗</h3><p>很多供应来自铝、锌工业流程副产品。优先扩展：冶炼废料、赤泥、锌渣回收、高纯精炼、GaN/GaAs、红外与光纤材料。</p></div>
+<div class="card"><h3>钨 / 锑</h3><p>钨下游包括硬质合金、切削工具、军工高温合金；锑用于阻燃剂、铅酸电池、半导体与军工材料。小市场矿种价格弹性大，周期风险也高。</p></div>
+<div class="card"><h3>黄金 / 白银</h3><p>黄金：央行、ETF、金条金币、矿企。白银：贵金属Beta + 工业需求。继续跟踪金银比、实际利率、美元、ETF地区流向和央行购金。</p></div>
+<div class="card"><h3>关键矿产回收</h3><p>原料包括矿山废料、冶炼渣、赤泥、煤灰和工业副产品。优势是可能比新建矿山更快落地，并直接符合美国政策资金方向。</p></div>
+</div></section>
+
+<section id="signals" class="view hidden"><h2>需要持续跟踪的验证指标</h2><div class="grid two">
+<div class="card"><h3>黄金</h3><ul><li>美国10年TIPS实际收益率</li><li>DXY</li><li>WGC全球ETF地区流向</li><li>央行月度净购金</li><li>金银比/白银200日均线</li></ul></div>
+<div class="card"><h3>铜</h3><ul><li>LME/COMEX库存</li><li>项目延误与新增产能</li><li>智利/秘鲁/DRC/赞比亚政策</li><li>矿企资本开支和单位开发成本</li></ul></div>
+<div class="card"><h3>关键矿产</h3><ul><li>中国出口许可与出口量</li><li>美国DPA/DOE/DoD资金与包销</li><li>非中国加工产能投产进度</li><li>价格上涨是否真正转化为盈利</li></ul></div>
+<div class="card"><h3>北美矿业</h3><ul><li>FAST-41实际审批时间</li><li>电力/道路/水资源成本</li><li>原住民/地方社区协议</li><li>融资成本与股权稀释</li></ul></div>
+</div></section>
+
+<section id="sources" class="view hidden"><h2>权威数据源</h2><div class="card"><ul>
+<li><a href="https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q2-2026" target="_blank">World Gold Council — Gold Demand Trends Q2 2026</a></li>
+<li><a href="https://www.gold.org/goldhub/research/central-bank-gold-reserves-survey-2026" target="_blank">World Gold Council — Central Bank Gold Reserves Survey 2026</a></li>
+<li><a href="https://www.iea.org/reports/global-critical-minerals-outlook-2026" target="_blank">IEA — Global Critical Minerals Outlook 2026</a></li>
+<li><a href="https://pubs.usgs.gov/publication/ofr20261018" target="_blank">USGS — China Mineral Production & Infrastructure 2026</a></li>
+<li><a href="https://pubs.usgs.gov/publication/mcs2026" target="_blank">USGS — Mineral Commodity Summaries 2026</a></li>
+<li><a href="https://www.energy.gov/cmei/articles/does-office-critical-minerals-and-energy-innovation-announces-162-million-accelerate" target="_blank">U.S. DOE — $162m Critical Minerals Recovery Projects</a></li>
+</ul><p class="muted">原则：采访用于发现问题；WGC、IEA、USGS、DOE/DoD、监管文件和公司财报用于验证。</p></div></section>
+</main></div>
+<script>
+const opps=[
+{name:"铜：低政治风险供给 + 电网链",stage:"验证中",score:92,tags:["铜","电网","矿业"],why:"IEA预计2035仍约25%供应缺口，2040需求增加约700万吨。",risk:"中国需求弱、回收替代、非洲项目加速。"},
+{name:"关键矿产中游：分离/精炼/磁材",stage:"早期",score:95,tags:["稀土","磁材","加工"],why:"真正瓶颈集中在中游加工环节，供给集中度高。",risk:"技术爬坡、成本、补贴变化。"},
+{name:"镓/锗副产品回收与高纯精炼",stage:"早期",score:88,tags:["镓","锗","回收"],why:"USGS显示中国原生镓约98%、精炼锗约77%。",risk:"市场小、价格波动、纯度门槛。"},
+{name:"钨：非中国产能 + 军工工具链",stage:"验证中",score:82,tags:["钨","军工","工具"],why:"中国钨矿占比80%+，出口控制后价格大涨。",risk:"高价格可能让可研IRR失真。"},
+{name:"关键矿产回收：工业废料/尾料",stage:"早期",score:90,tags:["回收","DOE","关键矿产"],why:"DOE 2026年8月拨1.62亿美元支持9个项目。",risk:"技术放大、原料合同、资本开支。"},
+{name:"黄金：央行结构性配置",stage:"拥挤",score:78,tags:["黄金","央行","ETF"],why:"WGC：Q2央行净购289吨；89%央行预计全球官方持金继续增加。",risk:"实际利率上行、美元走强、高价压制实物需求。"}];
+function card(o){return `<div class="card"><div class="muted">${o.stage}</div><h3>${o.name}</h3>${o.tags.map(t=>`<span class="tag">${t}</span>`).join("")}<p>${o.why}</p><p><b>研究分：${o.score}/100</b></p><p class="risk"><b>反证：</b>${o.risk}</p></div>`}
+function render(){let q=document.querySelector('#q').value.toLowerCase(),s=document.querySelector('#stage').value;let xs=opps.filter(o=>(!s||o.stage===s)&&(!q||(o.name+" "+o.tags.join(" ")+" "+o.why).toLowerCase().includes(q)));document.querySelector('#radarGrid').innerHTML=xs.map(card).join("");document.querySelector('#homeRadar').innerHTML=opps.slice().sort((a,b)=>b.score-a.score).map(card).join("")}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('hidden',v.id!==b.dataset.v))});
+document.querySelector('#q').oninput=render;document.querySelector('#stage').onchange=render;render();
+</script></body></html>
